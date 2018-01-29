@@ -1,0 +1,62 @@
+title: Намедни. Наша Эра
+description: > # this means to ignore newlines until "baseurl:"
+  Намедни. Наша Эра. События, люди, явления — то, без чего нас невозможно представить, еще труднее — понять
+baseurl: "" # the subpath of your site, e.g. /blog
+# url: "http://127.0.0.1:4000" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://namednibook.ru"
+# Build settings
+markdown: kramdown
+# theme: minima
+gems:
+  - jekyll-sitemap
+
+excerpt_separator: <!--more-->
+
+collections:
+  phenomena:
+    output: true
+    layout: post
+    permalink: /:path.html
+  years:
+    output: true
+    layout: year
+    permalink: /years/:path/
+  volumes:
+    output: true
+    layout: page
+    permalink: /volumes/:path/
+  movies:
+    output: true
+    layout: page
+    permalink: /:path.html
+  ri:
+    output: true
+    layout: page
+    permalink: /ri/:path.html
+
+defaults:
+  - scope:
+      path: ""
+      type: "phenomena"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "years"
+    values:
+      layout: "year"
+  - scope:
+      path: ""
+      type: "volumes"
+    values:
+      layout: "volume"
+  - scope:
+      path: ""
+      type: "movies"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+      type: "ri"
+    values:
+      layout: "ri"

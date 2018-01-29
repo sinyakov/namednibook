@@ -1,0 +1,42 @@
+---
+layout: page
+title: Год {{ page.title }} | Намедни. Наша Эра
+---
+
+{% assign prevYear = page.title | plus: -1 %}
+{% assign nextYear = page.title | plus: 1 %}
+
+{% if prevYear == 1945 %}
+  {% assign prevYear = 1940 %}
+{% endif %}
+{% if nextYear == 1941 %}
+  {% assign nextYear = 1946 %}
+{% endif %}
+
+<div class="page-title page-title--center page-title--years">
+  <div class="year-title">
+  {% if prevYear != 1930 %}
+    <div class="year-title__nearby-year year-title__nearby-year--prev">
+      <a class="year-title__link" href="/years/{{prevYear}}">← <span class="year-title__underline">{{prevYear}}</span></a>
+    </div>
+  {% endif %}
+    <h1 class="year-title__curr-year">{{ page.title }}</h1>
+  {% if nextYear != 2011 %}
+    <div class="year-title__nearby-year year-title__nearby-year--next">
+      <a class="year-title__link" href="/years/{{nextYear}}"><span class="year-title__underline">{{nextYear}}</span> →</a>
+    </div>
+  {% endif %}
+  </div>
+</div>
+
+
+{% assign yearsPhenomena =  site.phenomena | where: 'categories', page.title  %}
+
+<div class="years-phenomena">
+{% for phenomenon in yearsPhenomena %}
+  <a class="years-phenomena__link" href="{{ phenomenon.baseurl }}{{ phenomenon.url }}">
+    <h2 class="years-phenomena__header">{{ phenomenon.title }}</h2>
+    <div class="years-phenomena__lead">{{ phenomenon.excerpt | strip_html}}</div>
+  </a> 
+{% endfor %}
+</div>

@@ -1,0 +1,17 @@
+---
+layout: page
+title: Список феноменов
+permalink: /phenomena/
+---
+
+<h1 class="page-title">Список феноменов</h1>
+
+{% for p in site.phenomena %}
+  <div class="post-preview" id="{{p.id | slice: 1, p.id.size}}">
+    <h3 class="post-preview__header">{{p.title}} <span class="post-preview__year">{{p.categories}}</span> </h3>
+    <p class="post-preview__lead">{{ p.excerpt | strip_html}}</p>
+  </div>
+{% endfor %}
+
+
+

@@ -1,0 +1,52 @@
+---
+layout: default
+---
+
+{% assign interval = page.id | split: '/' | last %}
+{% assign intervalStart = interval | split: '-' | first | plus: 0 %}
+{% assign intervalEnd = interval | split: '-' | last | plus: 0 %}
+
+
+<h1 class="post__header">Том «{{interval}}»</h1>
+
+<article class="volume">
+  <div class="volume__text">{{page.content}}</div>
+  <img class="volume__img" src="/img/volumes/covers/{{intervalStart}}-{{intervalEnd}}.jpg" alt="Намедни {{intervalStart}}-{{intervalEnd}}">
+</article>
+
+{% if intervalStart != 2011 and intervalStart != 1918 %}
+
+{% assign years =  site.phenomena | sort: 'categories' | map: 'categories' | join: ','  | split: ',' | uniq %}
+
+<h2 class="volume__phenomena-header">Феномены {{interval}}</h2>
+
+<ul class="phenomena-list">
+  {% for year in years %}
+    {% assign yearInt = year | plus: 0 %}
+    {% if yearInt >= intervalStart and yearInt <= intervalEnd %}
+    <li class="phenomena-list__item">
+      <a class="phenomena-list__year-link" href="{{ base.url }}/years/{{ year }}" title="Феномены {{ year }} года">{{ year }}</a>
+      <ul class="phenomena-list__year-list">{% for note in site.phenomena %}{% if note.categories contains year %}<li class="phenomena-list__year-item"><a href="{{ site.baseurl }}{{ note.url }}" title="{{ note.title }}">{{ note.title }}</a></li>{% endif %}{% endfor %}</ul>
+    </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+
+{% endif %}
+
+<h2 class="volume__phenomena-header">Другие тома «Намедни»</h2>
+<ul class="volume-list">
+{% for vol in site.volumes %}
+  {% assign volInterval = vol.id | split: '/' | last %}
+  {% if volInterval != 'index' and volInterval != '1918-1930' and volInterval != '2011-2015' and volInterval != interval %}
+    <li class="volume-item">
+      <a class="volume-item__wrapper" href="/volumes/{{ volInterval }}/">
+        <img src="/img/volumes/covers/{{volInterval}}.jpg" alt="Намедни {{volInterval}}" title="Том «Намедни {{volInterval}}»">
+      </a>
+    </li>
+  {% endif %}
+{% endfor %}
+</ul>
+
+
+

@@ -1,0 +1,37 @@
+<div class="ri-title__nav">
+  <div class="ri-title__book">
+  {% if section > 1 %}
+    <div class="ri-title__nearby-year ri-title__nearby-year--prev">
+      <a class="ri-title__link" href="{{ site.baseurl }}/ri/{{ page.category }}/{{ section | plus: -1 }}.html">Глава {{ section | plus: -1 }}</a>
+    </div>
+  {% endif %}
+
+  {% case page.category %}
+  {% when 'alexander-i' %}
+    <a href="{{ site.baseurl }}/ri/alexander-i">Александр I</a>
+  {% when 'alexander-ii' %}
+    <a href="{{ site.baseurl }}/ri/alexander-ii">Александр II</a>
+  {% when 'alexander-iii' %}
+    <a href="{{ site.baseurl }}/ri/alexander-iii">Александр III</a>
+  {% when 'ekaterina-ii' %}
+    <a href="{{ site.baseurl }}/ri/ekaterina-i">Екатерина II</a>
+  {% when 'petr-i' %}
+    <a href="{{ site.baseurl }}/ri/petr-i">Петр I</a>
+  {% when 'bez-petra' %}
+    <a href="{{ site.baseurl }}/ri/bez-petra">Империя без Петра</a>
+  {% when 'pavel-i' %}
+    <a href="{{ site.baseurl }}/ri/pavel-i">Павел I</a>
+  {% when 'nikolay-i' %}
+    <a href="{{ site.baseurl }}/ri/nikolay-i">Николай I</a>  {% when 'nikolay-ii' %}
+    <a href="{{ site.baseurl }}/ri/nikolay-ii">Николай II</a>
+  {% endcase %}
+  
+  {% assign currentCategorySize = site.ri | where: 'categories', page.categories[0] | size %}
+
+  {% if section < currentCategorySize %}
+    <div class="ri-title__nearby-year ri-title__nearby-year--next">
+      <a class="ri-title__link" href="{{ site.baseurl }}/ri/{{ page.category }}/{{ section | plus: 1 }}.html">Глава {{ section | plus: 1 }}</a>
+    </div>
+  {% endif %}
+  </div>
+</div>

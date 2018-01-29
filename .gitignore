@@ -1,0 +1,11 @@
+_site
+.sass-cache
+.jekyll-metadata
+**/.DS_Store
+
+# Content files
+_phenomena
+_ri
+_movies
+_volumes
+img

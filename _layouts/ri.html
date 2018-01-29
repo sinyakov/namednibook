@@ -1,0 +1,26 @@
+---
+layout: default
+---
+
+
+{% assign section = page.id | split: '/' | last | plus: 0 %}
+
+<div class="ri-wrapper">
+
+  <h1 class="ri-title__header">
+    <span class="ri-title__section">Глава {{section}}</span>
+    {{page.title}}
+  </h1>
+
+  {{ content }}
+  {% include ri-nav.html %}
+
+  <section class="ri-preview">
+  <div class="ri-preview__inner">
+      <h2 class="ri-preview__title">Российская империя</h2>
+      <p>16-серийный проект Леонида Парфенова об истории российского государства с 1697 по 1917 год, выпущенный к 300-летию основания Российской империи.</p>
+      <p>Через десять лет вышла серия книг «Российская империя», повторяющая телеверсию. На данный момент выпущено 3 тома из 5. Последний том «Александр I. Николай I» вышел в 2014 году.</p>
+  </div>
+  </section>
+
+</div>

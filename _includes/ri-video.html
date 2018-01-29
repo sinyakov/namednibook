@@ -1,0 +1,49 @@
+{% assign episode = page.id | split: '/' | last | plus: 0 %}
+
+
+  {% case episode %}
+  {% when 1 %}
+    {% assign url = 'O9ivrj4JE_U' %}
+  {% when 2 %}
+    {% assign url = 'x847i73Dl4Y' %}
+  {% when 3 %}
+    {% assign url = 'RtPcOdeJqMQ' %}
+  {% when 4 %}
+    {% assign url = 'RtPcOdeJqMQ' %}
+  {% when 5 %}
+    {% assign url = 'Q61aK5KrzOM' %}
+  {% when 6 %}
+    {% assign url = 'mTXiJgZwMTM' %}
+  {% when 7 %}
+    {% assign url = 'Kq6LGTU-rV8' %}
+  {% when 8 %}
+    {% assign url = 'WnrvSAkKc9U' %}
+  {% when 9 %}
+    {% assign url = 'nnHuSWzEEz0' %}
+  {% when 10 %}
+    {% assign url = 'nnHuSWzEEz0' %}
+  {% when 11 %}
+    {% assign url = 'r-SE50N1OV0' %}
+  {% when 12 %}
+    {% assign url = 'q9beEncusyw' %}
+  {% when 13 %}
+    {% assign url = 'Smmvwq2stWw' %}
+  {% when 14 %}
+    {% assign url = 'UFvPnkEyyBA' %}
+  {% when 15 %}
+    {% assign url = 'G8_4mnE22Vw' %}
+  {% when 16 %}
+    {% assign url = '9h1J3cTUA0E' %}
+  {% endcase %}
+  
+<h1 class="page-title page-title--center">{{page.title}}</h1>
+
+<div class="player">
+  {% if episode > 1 %}
+  <a class="player__prev" href="{{site.baseurl}}/ri/{{episode | plus: -1}}"></a>
+  {% endif %}
+  <iframe class="player__iframe" width="853" height="480" src="https://www.youtube.com/embed/O9ivrj4JE_U" frameborder="0" allowfullscreen></iframe>
+  {% if episode < 16 %}
+  <a class="player__next" href="{{site.baseurl}}/ri/{{episode | plus: 1}}"></a>
+  {% endif %}
+</div>

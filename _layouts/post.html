@@ -1,0 +1,115 @@
+---
+layout: default
+---
+
+{% assign currentYear = page.categories[0] | plus: 0 %}
+
+{% if currentYear >= 1931 and currentYear <= 1940 %}
+  {% assign volume = '1931-1940' %}
+{% elsif currentYear >= 1946 and currentYear <= 1960 %}
+  {% assign volume = '1946-1960' %}
+{% elsif currentYear >= 1961 and currentYear <= 1970 %}
+  {% assign volume = '1961-1970' %}
+{% elsif currentYear >= 1971 and currentYear <= 1980 %}
+  {% assign volume = '1971-1980' %}
+{% elsif currentYear >= 1981 and currentYear <= 1990 %}
+  {% assign volume = '1981-1990' %}
+{% elsif currentYear >= 1991 and currentYear <= 2000 %}
+  {% assign volume = '1991-2000' %}
+{% elsif currentYear >= 2001 and currentYear <= 2005 %}
+  {% assign volume = '2001-2005' %}
+{% elsif currentYear >= 2006 and currentYear <= 2010 %}
+  {% assign volume = '2006-2010' %}
+{% endif %}
+
+{% assign imgUrl = '/img/phenomena/' | append: currentYear | append: page.id | append: '.jpg' %}
+
+{% assign content_array = page.content | split: site.excerpt_separator %}
+{% assign excerpt_only = content_array | first %}
+{% assign content_remainder = content_array | last %}
+
+<div class="post-wrapper">
+  <article class="post">
+    <h1 class="post__header">
+      {{ page.title }}
+    </h1>
+    <div class="post__content">
+  
+      {{ excerpt_only | append: '</p>'}}
+      
+      {% if currentYear <= 1940 or currentYear >= 1961 and currentYear <= 1962 or currentYear >= 1995 and currentYear <= 2006 %}
+      <img class="post__img" src="{{ imgUrl }}" alt="{{ page.title }}">
+      {% endif %}
+
+      {{ content_array | last }}
+
+    </div>
+
+<!--     <ul class="breadcrumbs">
+      <li class="breadcrumbs__level"><a class="breadcrumbs__link" href="/years">Все феномены</a></li>
+      <li class="breadcrumbs__level"><a class="breadcrumbs__link" href="/volumes/{{ volume }}">Том «{{ volume }}»</a></li>
+      <li class="breadcrumbs__level"><a class="breadcrumbs__link" href="/years/{{ currentYear }}">Год {{ currentYear }}</a></li>
+    </ul> -->
+
+    <div class="banner">
+      <div class="banner__inner">
+        <h2 class="banner__header">Журналист Леонид&nbsp;Парфенов</h2>
+        <p>Автор телепроектов «Намедни» и <a href="/ri/">«Российская империя»</a>. Пятикратный лауреат ТЭФИ.</p>
+        <p>В настоящее время выпускает <a href="/volumes/">тома «Намедни. Наша эра»</a>, описывающие исторические
+          явления по десятилетиям, и снимает документальные фильмы (<a href="/zvorykin.html">«Зворыкин-Муромец»</a>,
+          <a href="/glaz-bozhij.html">«Глаз божий»</a>, <a href="/tsvet-natsii.html">«Цвет нации»</a>,
+          <a
+            href="/russkie-evrei-2.html">«Русские евреи»</a>).</p>
+      </div>
+    </div>
+
+  </article>
+
+  <aside class="sidebar">
+    <div class="sidebar__year">
+
+      {% assign prevYear = currentYear | plus: -1 %} {% assign nextYear = currentYear | plus: 1 %} {% if prevYear == 1945 %} {%
+      assign prevYear = 1940 %} {% endif %} {% if nextYear == 1941 %} {% assign nextYear = 1946 %} {% endif %}
+
+      <img class="sidebar__volume-cover" src="{{ site.baseurl }}/img/volumes/covers/{{ volume }}.jpg" alt="Том {{ volume }}">
+      <div class="sidebar__year-inner">
+        <div class="year-title">
+          {% if prevYear != 1930 %}
+          <div class="year-title__nearby-year year-title__nearby-year--prev sidebar__nearby-year sidebar__nearby-year--prev">
+            <a class="year-title__link" href="/years/{{prevYear}}">← <span class="year-title__underline">{{prevYear}}</span></a>
+          </div>
+          {% endif %}
+          <div class="year-title__curr-year sidebar__curr-year"><a href="/years/{{currentYear}}">{{ currentYear }}</a></div>
+          {% if nextYear != 2011 %}
+          <div class="year-title__nearby-year year-title__nearby-year--next sidebar__nearby-year sidebar__nearby-year--next">
+            <a class="year-title__link" href="/years/{{nextYear}}"><span class="year-title__underline">{{nextYear}}</span> →</a>
+          </div>
+          {% endif %}
+        </div>
+        <div class="sidebar__volume-link">Из тома <a href="/volumes/{{ volume }}">{{ volume }}</a></div>
+      </div>
+    </div>
+
+    <!--noindex-->
+
+    <div class="ya-site-form ya-site-form_inited_no" onclick="return {'action':'https://namednibook.ru/search','arrow':false,'bg':'#ffcc00','fontsize':12,'fg':'#000000','language':'ru','logo':'rb','publicname':'Поиск в «Намедни. Наша Эра»','suggest':true,'target':'_self','tld':'ru','type':2,'usebigdictionary':true,'searchid':2305305,'input_fg':'#000000','input_bg':'#ffffff','input_fontStyle':'normal','input_fontWeight':'normal','input_placeholder':'Поиск феномена','input_placeholderColor':'#999999','input_borderColor':'#7f9db9'}"><form action="https://yandex.ru/search/site/" method="get" target="_self" accept-charset="utf-8"><input type="hidden" name="searchid" value="2305305"/><input type="hidden" name="l10n" value="ru"/><input type="hidden" name="reqenc" value=""/><input type="search" name="text" value=""/><input type="submit" value="Найти"/></form></div><style type="text/css">.ya-page_js_yes .ya-site-form_inited_no { display: none; }</style><script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script>
+
+
+    <div class="sidebar__phenomena">
+      {% assign currentYearsPhenomena = site.phenomena | where: 'categories', page.categories[0] %} {% assign currentYearsSize
+      = currentYearsPhenomena | size | plus: -1 %}
+      <h2 class="sidebar__header">
+        Еще {{ currentYearsSize }} {% assign currentYearSizeMod10 = currentYearsSize | modulo: 10 %} {% assign currentYearSizeDiv10
+        = currentYearsSize | divided_by: 10 %} {% if currentYearSizeMod10 == 1 and currentYearsSize != 11 %} феномен {% elsif
+        currentYearSizeMod10 >= 2 and currentYearSizeMod10
+        <=4 and currentYearSizeDiv10 !=1 %} феномена {% else %}
+          феноменов {% endif %} {{ page.categories }} года</h2>
+          <ul class="sidebar__phenomena-list">
+            {% for note in currentYearsPhenomena %} {% if note.id != page.id %}
+            <li class="phenomena-list__year-item"><a href="{{ site.baseurl }}{{ note.url }}" title="{{ note.title }}">{{ note.title }}</a></li>
+            {% endif %} {% endfor %}
+          </ul>
+    </div>
+    <!--/noindex-->
+  </aside>
+</div>

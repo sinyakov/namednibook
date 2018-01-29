@@ -1,0 +1,55 @@
+<header class="main-header">
+  <div class="wrapper {% if page.layout == 'post' %} wrapper--post {% endif %}">
+    {% if page.layout == 'home'  %}
+    <div class="main-header__title-block">
+      <h1 class="main-header__title">Намедни. Наша Эра</h1>
+      <div class="main-header__tagline">Леонид Парфенов</div>
+    </div>
+    {% else %}
+    <a class="main-header__title-block" href="/">
+      <h1 class="main-header__title">Намедни. Наша Эра</h1>
+      <div class="main-header__tagline">Леонид Парфенов</div>
+    </a>
+    {% endif %}
+  </div>
+</header>
+
+<nav class="main-menu">
+  <div class="wrapper {% if page.layout == 'post' %} wrapper--post {% endif %}">
+    <ul class="main-menu__list">
+      <li class="main-menu__item">
+      {% if page.url == '/years/'  %}
+        <span class="">Феномены по годам</span>
+      {% else %}
+        <a class="main-menu__link" href="{{ site.baseurl }}/years">Феномены по годам</a>
+      {% endif %}
+      </li>
+      <li class="main-menu__item">
+      {% if page.url == '/movies/'  %}
+        <span class="">Фильмы Парфенова</span>
+      {% else %}
+        <a class="main-menu__link" href="{{ site.baseurl }}/movies">Фильмы Парфенова</a>
+      {% endif %}
+      </li>
+      <li class="main-menu__item">
+      {% if page.url == '/ri/'  %}
+        <span class="">Российская империя</span>
+      {% else %}
+        <a class="main-menu__link" href="{{ site.baseurl }}/ri">Российская империя</a>
+      {% endif %}
+      </li>
+      <li class="main-menu__item">
+      {% if page.url == '/volumes/1931-1940/'  %}
+        <span class="">Том «1931-1940»</span>
+      {% else %}
+        <a class="main-menu__link main-menu__link--important" href="{{ site.baseurl }}/volumes/1931-1940">Том «1931-1940»</a>
+      {% endif %}
+
+      </li>
+    </ul>
+
+<!--     <a class="main-menu__link main-menu__about" href="{{ site.baseurl }}/about">Информация о сайте</a>
+ --> 
+  
+  </div>
+</nav>
